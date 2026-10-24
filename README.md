@@ -2,7 +2,7 @@
 
 一个 Windows 11 暗色风格的 Rime 主题。
 
-\!\[screenshots\](/docs/dark.png)
+\!\[screenshots\](dark.png)
 
 
 
