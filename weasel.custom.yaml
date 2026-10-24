@@ -1,0 +1,179 @@
+# ============================================================================
+#  Rime / 小狼毫（Weasel）· Win11 风格主题 —— 14pt 版
+#  横向候选栏 · 圆角 · 浅色深色两套
+# ----------------------------------------------------------------------------
+#  放置： %APPDATA%\Rime\weasel.custom.yaml
+#  生效： 托盘右键小狼毫 →「重新部署」
+#
+#  这是一个「补丁」文件，必须以 patch: 开头。
+#  若 %APPDATA%\Rime\ 下已有同名文件（通常带 customization: 一段部署元数据），
+#  请把 patch: 下面的内容合并进去，而不是整份覆盖。
+#
+#  ── 字号与 DPI 的关系（重要）──────────────────────────────────
+#  小狼毫会把字号乘以 DPI 比例：
+#      d2d.cpp   CreateTextFormat(..., point * m_dpiScaleFontPoint, ...)
+#  所以 font_point: 14 在 100% 缩放下的物理大小是 14pt ≈ 18.7px，
+#  但在 150% 缩放（DPI 144）下会变成 28px，视觉上相当于 100% 下的 21pt。
+#  这份配置就是「14pt」原值版，适合 100% 缩放，或就想用大字的情形。
+# ============================================================================
+
+patch:
+
+  # ==========================================================================
+  #  字体
+  # --------------------------------------------------------------------------
+  #  14 / 11 / 13 —— 保持 1 : 0.8 : 0.9 的字号比例（与 10pt 版一致）
+  #      想要默认的等大序号 → label 也写 14
+  #      觉得大 → 整体降到 12 / 10 / 11
+  # ==========================================================================
+  style/font_face: "Microsoft YaHei UI"
+  style/font_point: 14
+  style/label_font_face: "Microsoft YaHei UI"
+  style/label_font_point: 11
+  style/comment_font_face: "Microsoft YaHei UI"
+  style/comment_font_point: 13
+
+  # ==========================================================================
+  #  主题与显示
+  # ==========================================================================
+  style/color_scheme: win11_light
+  style/color_scheme_dark: win11_dark      # 跟随系统深色（Win10 1809+）
+  style/inline_preedit: true               # 编码内联，不单独占一行 → 最像 Win11
+  style/ascii_tip_follow_cursor: true
+  style/label_format: "%s"                 # 序号不带点；想要 "1." 就改成 "%s."
+  style/candidate_abbreviate_length: 0
+  style/hover_type: none                   # Win11 候选无悬停高亮
+  style/antialias_mode: default            # 字发虚时试 cleartype / grayscale
+
+  # ==========================================================================
+  #  布局
+  # --------------------------------------------------------------------------
+  #  横向的两种等价写法，老版本认 style/horizontal，新版本还认 layout/type。
+  #  两处都写、值一致，任何版本都能生效。
+  #
+  #  下面所有尺寸都按 14pt 放大过（相对 10pt 版约 ×1.4）：
+  #  字号变大后如果内边距和圆角不跟着涨，高亮块会显得挤、圆角会显得太尖。
+  # ==========================================================================
+  style/horizontal: true
+
+  style/layout:
+    type: horizontal
+
+    # 横排时 align_type 控制同一行内各候选的纵向对齐，center 最自然
+    align_type: center
+
+    # 横排靠内容自适应宽度，不要撑最小宽
+    min_width: 0
+    max_width: 0        # 0 = 单行不收行；想让候选自动换行就填个像素值，如 800
+    min_height: 0
+    max_height: 0
+
+    # 1px 细描边 —— Fluent 的关键特征，别去掉
+    border_width: 1
+    margin_x: 13
+    margin_y: 8
+
+    # 编码行与候选行的间距（inline_preedit 时基本不生效）
+    spacing: 11
+
+    # ★ 横排下 candidate_spacing 是「候选与候选之间的左右间隙」
+    candidate_spacing: 13
+
+    # ★ 横排下 hilite_spacing 是「序号与文字之间」的间隙
+    hilite_spacing: 6
+
+    # 高亮块比文字多出来的内边距
+    hilite_padding_x: 10
+    hilite_padding_y: 4
+
+    # 圆角：字号大了，半径也要跟着涨，否则比例失衡
+    corner_radius: 13           # 整个选词框
+    hilited_corner_radius: 7    # 高亮候选那一块
+
+    shadow_radius: 15
+    shadow_offset_x: 0
+    shadow_offset_y: 4          # 投影下移，制造浮起感
+
+    baseline: 0
+    linespacing: 0
+
+  # ==========================================================================
+  #  浅色
+  # --------------------------------------------------------------------------
+  #  颜色格式是 0xAABBGGRR（ABGR），不是常见的 RGBA：
+  #      0xFF C0 67 00  →  alpha=FF  B=C0  G=67  R=00  →  实际 #0067C0
+  #  写反不会报错，只会得到一堆莫名其妙的颜色。
+  #
+  #  back_color 必须带透明度（alpha < 0xFF），否则圆角裁剪失效、四角仍是直角。
+  # ==========================================================================
+  preset_color_schemes/win11_light:
+    name: "Win11 浅色"
+    author: "custom"
+
+    # ── 窗口 ──
+    back_color: 0xFAFEFEFE        # #FEFEFE，alpha FA = 96%
+    border_color: 0xFFE8E8E8      # #E8E8E8
+    shadow_color: 0x46000000      # 黑 27%
+
+    # ── 编码区 ──
+    text_color: 0xFF1A1A1A
+    hilited_text_color: 0xFF1A1A1A
+    hilited_back_color: 0x00000000    # 透明：不画编码底色
+
+    # ── 候选区 ──
+    candidate_text_color: 0xFF1A1A1A
+    candidate_back_color: 0x00000000  # 透明：露出窗口底色
+    candidate_border_color: 0x00000000
+    candidate_shadow_color: 0x00000000
+    comment_text_color: 0xFF767676
+
+    # ── 高亮候选：系统强调色 #0067C0 + 白字 ──
+    hilited_candidate_text_color: 0xFFFFFFFF
+    hilited_candidate_back_color: 0xFFC06700
+    hilited_candidate_border_color: 0x00000000
+    hilited_candidate_shadow_color: 0x1A000000
+    hilited_comment_text_color: 0xC8FFFFFF
+    hilited_mark_color: 0x00000000
+
+    # ── 序号 ──
+    label_color: 0xFF707070
+    hilited_label_color: 0xFFFCF1E8   # #E8F1FC
+
+    # ── 翻页 ──
+    prevpage_color: 0xFF707070
+    nextpage_color: 0xFF707070
+
+  # ==========================================================================
+  #  深色
+  # ==========================================================================
+  preset_color_schemes/win11_dark:
+    name: "Win11 深色"
+    author: "custom"
+
+    back_color: 0xFA2B2B2B        # #2B2B2B
+    border_color: 0xFF3F3F3F
+    shadow_color: 0xBE000000
+
+    text_color: 0xFFF2F2F2
+    hilited_text_color: 0xFFF2F2F2
+    hilited_back_color: 0x00000000
+
+    candidate_text_color: 0xFFF2F2F2
+    candidate_back_color: 0x00000000
+    candidate_border_color: 0x00000000
+    candidate_shadow_color: 0x00000000
+    comment_text_color: 0xFFA6A6A6
+
+    # 深色下强调色是浅蓝 #60CDFF，所以字要深色
+    hilited_candidate_text_color: 0xFF1C1307   # #07131C
+    hilited_candidate_back_color: 0xFFFFCD60   # #60CDFF
+    hilited_candidate_border_color: 0x00000000
+    hilited_candidate_shadow_color: 0x33000000
+    hilited_comment_text_color: 0xC81C1307
+    hilited_mark_color: 0x00000000
+
+    label_color: 0xFF9A9A9A
+    hilited_label_color: 0xFF402B0B            # #0B2B40
+
+    prevpage_color: 0xFF9A9A9A
+    nextpage_color: 0xFF9A9A9A

@@ -1,0 +1,125 @@
+
+patch:
+
+  style/font_face: "Microsoft YaHei UI"
+  style/font_point: 10
+  style/label_font_face: "Microsoft YaHei UI"
+  style/label_font_point: 8
+  style/comment_font_face: "Microsoft YaHei UI"
+  style/comment_font_point: 9
+
+    style/color_scheme: win11_light
+  style/color_scheme_dark: win11_dark      
+  style/inline_preedit: true              
+  style/ascii_tip_follow_cursor: true
+  style/label_format: "%s"                 
+  style/candidate_abbreviate_length: 0
+  style/hover_type: none                   
+  style/antialias_mode: default            
+
+    style/horizontal: true
+
+  style/layout:
+    type: horizontal
+
+    
+    align_type: center
+
+    
+    min_width: 0
+    max_width: 0        
+    min_height: 0
+    max_height: 0
+
+    
+    border_width: 1
+    margin_x: 9
+    margin_y: 6
+
+   
+    spacing: 8
+
+    
+    candidate_spacing: 9
+
+    
+    hilite_spacing: 4
+
+    
+    hilite_padding_x: 7
+    hilite_padding_y: 3
+
+    
+    corner_radius: 9           
+    hilited_corner_radius: 5    
+
+    shadow_radius: 11
+    shadow_offset_x: 0
+    shadow_offset_y: 3          
+
+    baseline: 0
+    linespacing: 0
+
+    preset_color_schemes/win11_light:
+    name: "Win11 浅色"
+    author: "custom"
+
+       back_color: 0xFAFEFEFE        
+    border_color: 0xFFE8E8E8      
+    shadow_color: 0x46000000    
+
+  
+    text_color: 0xFF1A1A1A
+    hilited_text_color: 0xFF1A1A1A
+    hilited_back_color: 0x00000000    
+
+        candidate_text_color: 0xFF1A1A1A
+    candidate_back_color: 0x00000000 
+    candidate_border_color: 0x00000000
+    candidate_shadow_color: 0x00000000
+    comment_text_color: 0xFF767676
+
+    
+    hilited_candidate_text_color: 0xFFFFFFFF
+    hilited_candidate_back_color: 0xFFC06700
+    hilited_candidate_border_color: 0x00000000
+    hilited_candidate_shadow_color: 0x1A000000
+    hilited_comment_text_color: 0xC8FFFFFF
+    hilited_mark_color: 0x00000000
+
+    label_color: 0xFF707070
+    hilited_label_color: 0xFFFCF1E8   # #E8F1FC
+
+        prevpage_color: 0xFF707070
+    nextpage_color: 0xFF707070
+
+    preset_color_schemes/win11_dark:
+    name: "Win11 深色"
+    author: "custom"
+
+    back_color: 0xFA2B2B2B        # #2B2B2B
+    border_color: 0xFF3F3F3F
+    shadow_color: 0xBE000000
+
+    text_color: 0xFFF2F2F2
+    hilited_text_color: 0xFFF2F2F2
+    hilited_back_color: 0x00000000
+
+    candidate_text_color: 0xFFF2F2F2
+    candidate_back_color: 0x00000000
+    candidate_border_color: 0x00000000
+    candidate_shadow_color: 0x00000000
+    comment_text_color: 0xFFA6A6A6
+
+    
+    hilited_candidate_text_color: 0xFF1C1307   
+    hilited_candidate_back_color: 0xFFFFCD60   
+    hilited_candidate_border_color: 0x00000000
+    hilited_candidate_shadow_color: 0x33000000
+    hilited_comment_text_color: 0xC81C1307
+    hilited_mark_color: 0x00000000
+
+    label_color: 0xFF9A9A9A
+    hilited_label_color: 0xFF402B0B            
+    prevpage_color: 0xFF9A9A9A
+    nextpage_color: 0xFF9A9A9A
